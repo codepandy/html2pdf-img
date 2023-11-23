@@ -1,0 +1,12 @@
+node_modules
+.DS_Store
+dist
+dist-ssr
+*.local
+/dist*
+*-lock.*
+pnpm-debug
+src/types/auto-components.d.ts
+src/types/auto-imports.d.ts
+*.log
+.idea

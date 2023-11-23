@@ -1,0 +1,35 @@
+{
+  "name": "html2pdf-img",
+  "version": "1.0.0",
+  "description": "HTML下载和打印pdf或者img格式，并支持水印，pdf支持配置分页元素自动分页，不会截断元素。",
+  "main": "jspdf.js",
+  "scripts": {
+    "pub": "npm publish"
+  },
+  "dependencies": {
+    "file-saver": "^2.0.5",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^2.5.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codepandy/html2pdf-img.git"
+  },
+  "keywords": [
+    "html2pdf",
+    "html2img",
+    "jspdf",
+    "js2pdf",
+    "js2img",
+    "html2image",
+    "js2image",
+    "js导出pdf",
+    "js导出图片"
+  ],
+  "author": "codepandy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codepandy/html2pdf-img/issues"
+  },
+  "homepage": "https://github.com/codepandy/html2pdf-img/#readme"
+}
