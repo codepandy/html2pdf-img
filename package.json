@@ -1,6 +1,6 @@
 {
   "name": "html2pdf-img",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "HTML下载和打印pdf或者img格式，并支持水印，pdf支持配置分页元素自动分页，不会截断元素。",
   "main": "jspdf.js",
   "scripts": {
