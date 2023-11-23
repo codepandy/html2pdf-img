@@ -7,7 +7,9 @@ HTML 下载或打印 pdf 或者 img 格式，pdf 也是以图片形式生成的�
 ## 安装：
 
 ```bash
-npm i html2pdf-2img
+npm i html2pdf-img
+
+yarn add html2pdf-img
 ```
 
 ## 关键代码
