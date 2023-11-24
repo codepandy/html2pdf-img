@@ -3,6 +3,8 @@ import html2Canvas from "html2canvas";
 import JsPDF from "jspdf";
 import fileSaver from "file-saver";
 import watermark from "./watermark";
+import printJS from "print-js";
+
 export default class HTML2JsPdf {
   constructor(el, title, option) {
     this.container = typeof el === "string" ? document.querySelector(el) : el;
@@ -25,11 +27,7 @@ export default class HTML2JsPdf {
    * @param {*} options 配置是否需要下载等相关参数
    * @returns
    */
-  outPdf(
-    successCallback,
-    errorCallback,
-    options = { isSave: true, isPrint: false }
-  ) {
+  outPdf(successCallback, errorCallback) {
     if (
       !this.option.pageBreak ||
       (this.option.pageBreak && this.option.pageBreak.length === 0)
@@ -99,13 +97,7 @@ export default class HTML2JsPdf {
               }
             }
             // 下载pdf
-            if (options.isSave) {
-              pdf.save(this.title + ".pdf");
-            }
-            // 自动打印
-            if (options.isPrint) {
-              pdf.autoPrint();
-            }
+            pdf.save(this.title + ".pdf");
             this.watermarkInstance.remove();
             document.body.removeChild(this.overlay);
             successCallback && successCallback();
@@ -121,7 +113,16 @@ export default class HTML2JsPdf {
         });
     }
   }
-  outImage() {
+  /**
+   *
+   * @param {执行成功回调函数} callback
+   * @param {配置打印和下载} options
+   * @param {图片类型} imgType
+   */
+  outImage(
+    callback,
+    options = { isSave: true, isPrint: false, imgType: "image/jpeg" }
+  ) {
     let source = this.cloneNode(this.container, false);
     this.mountNode(source);
     if (this.option.watermarkOption) {
@@ -135,10 +136,18 @@ export default class HTML2JsPdf {
       useCORS: true,
       allowTaint: true,
     }).then((canvas) => {
-      canvas.toBlob((blob) => {
-        fileSaver.saveAs(blob, this.title + ".png");
-        document.body.removeChild(this.overlay);
-      });
+      if (options.isSave) {
+        canvas.toBlob((blob) => {
+          fileSaver.saveAs(blob, this.title + ".png");
+          document.body.removeChild(this.overlay);
+          callback && callback();
+        });
+      }
+      if (options.isPrint) {
+        const imgStr = canvas.toDataURL(imgType);
+        printJS({ printable: imgStr, type: "image", base64: true });
+        callback && callback();
+      }
     });
   }
   mountNode(source) {

@@ -27,9 +27,12 @@ new JsPdfImg("#printPage", "导出的图片名称", {
     watermark_y_space: 160,
     watermark_width: 180,
   },
-}).outImage(() => {
-  console.log("结束");
-});
+}).outImage(
+  () => {
+    console.log("结束");
+  },
+  { isSave: false, isPrint: true }
+);
 
 new JsPdfImg("#printPage", "导出的pdf名称", {
   pageBreak: [".title", "#area", "li", "h3"], // 当导出pdf时候，这个参数必填
@@ -81,17 +84,17 @@ watermarkOption: {
 
 ## outPdf 方法
 
-`outPdf(successCallback,errorCallback,options)`方法是用来下载和打印 pdf 文件
+`outImage(successCallback,options)`方法是用来下载和打印 pdf 文件
 
 | 属性名          | 类型     | 含义             | 默认值                        |
 | --------------- | -------- | ---------------- | ----------------------------- |
 | successCallback | function | 执行成功回调函数 |                               |
-| errorCallback   | function | 执行失败回调函数 |                               |
 | options         | IOptions | 配置项           | `{isSave:true,isPrint:false}` |
 
 ## IOptions
 
-| 属性名  | 类型    | 含义         | 默认值 |
-| ------- | ------- | ------------ | ------ |
-| isSave  | boolean | 是否进行下载 | true   |
-| isPrint | boolean | 是否进行打印 | false  |
+| 属性名  | 类型    | 含义         | 默认值       |
+| ------- | ------- | ------------ | ------------ |
+| isSave  | boolean | 是否进行下载 | true         |
+| isPrint | boolean | 是否进行打印 | false        |
+| imgType | string  | 图片类型；image/png、image/jpeg 或 image/webp     | 'image/png' |
