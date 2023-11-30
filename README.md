@@ -93,8 +93,12 @@ watermarkOption: {
 
 ## IOptions
 
-| 属性名  | 类型    | 含义         | 默认值       |
-| ------- | ------- | ------------ | ------------ |
-| isSave  | boolean | 是否进行下载 | true         |
-| isPrint | boolean | 是否进行打印 | false        |
-| imgType | string  | 图片类型；image/png、image/jpeg 或 image/webp     | 'image/png' |
+| 属性名  | 类型    | 含义                                          | 默认值      |
+| ------- | ------- | --------------------------------------------- | ----------- |
+| isSave  | boolean | 是否进行下载                                  | true        |
+| isPrint | boolean | 是否进行打印                                  | false       |
+| imgType | string  | 图片类型；image/png、image/jpeg 或 image/webp | 'image/png' |
+
+## 注意：打印后删除用于生成 image 的元素
+
+打印后发现页面无法操作，是因为，打印图片时，需要生成图片放到页面上，并设置了透明度是 0，因此页面是被该元素覆盖了，所以打印成功后摇记得删除该元素。
