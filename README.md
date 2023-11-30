@@ -82,9 +82,9 @@ watermarkOption: {
 
 感谢 https://github.com/saucxs/watermark-dom
 
-## outPdf 方法
+## outImage 方法
 
-`outImage(successCallback,options)`方法是用来下载和打印 pdf 文件
+`outImage(successCallback,options)`方法是用来下载和打印 image 文件
 
 | 属性名          | 类型     | 含义             | 默认值                        |
 | --------------- | -------- | ---------------- | ----------------------------- |
